@@ -1,29 +1,32 @@
 services:
   db:
     image: postgres:15-alpine
+    container_name: matheus_ciriaco_db
     environment:
       POSTGRES_USER: fatec_user
       POSTGRES_PASSWORD: fatec_password
       POSTGRES_DB: todolist
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - matheus_ciriaco_data:/var/lib/postgresql/data
 
   api:
     build: ./backend
+    container_name: matheus_ciriaco_api
     restart: always  # <-- Se a API cair, o Docker sobe ela de novo até o banco estar pronto.
     environment:
       DB_HOST: db
     depends_on:
       - db
     ports:
-      - "3000:3000"
+      - "3027:3000"
 
   web:
     build: ./frontend
+    container_name: matheus_ciriaco_web
     ports:
-      - "80:80"
+      - "8027:80"
     depends_on:
       - api
 
 volumes:
-  postgres_data:
+  matheus_ciriaco_data:
