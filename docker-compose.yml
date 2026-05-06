@@ -21,11 +21,11 @@ services:
       - "3027:3000"
 
     healthcheck:
-        test: ["CMD", "curl", "-f", "http://localhost:3000/tarefas"]
-        interval: 30s
-        timeout: 10s
-        retries: 3
-        start_period: 40s
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3000/tarefas || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
 
     logging:
         driver: "json-file"
