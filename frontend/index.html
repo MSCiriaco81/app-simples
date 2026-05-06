@@ -12,7 +12,7 @@
 
     <script>
         async function loadTasks() {
-            const res = await fetch('http://localhost:3000/tarefas');
+            const res = await fetch('http://136.248.77.234:3027');
             const tasks = await res.json();
             const list = document.getElementById('taskList');
             list.innerHTML = tasks.map(t => `<li>${t.titulo}</li>`).join('');
