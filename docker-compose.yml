@@ -19,7 +19,7 @@ services:
       - db
 
   healthcheck:
-      test: ["CMD", "curl", "-f", "http://136.248.77.234:3027/tarefas"]
+      test: ["CMD", "curl", "-f", "http://136.248.77.234:3027"]
       interval: 30s
       timeout: 10s
       retries: 3
